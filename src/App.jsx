@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Routes,
   Route,
@@ -12,22 +12,22 @@ import './charts/ChartjsConfig';
 // Import pages
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
-
+  const token = JSON.parse(localStorage.getItem('token'));
   const location = useLocation();
-
-  useEffect(() => {
-    document.querySelector('html').style.scrollBehavior = 'auto'
-    window.scroll({ top: 0 })
-    document.querySelector('html').style.scrollBehavior = ''
-  }, [location.pathname]); // triggered on route change
+  
+  // if (!token){
+  //   return <Login />
+  // }
 
   return (
     <>
       <Routes>
+        <Route exact path="/" element={token ?<Dashboard token={token} /> : <Login />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/register" element={<Register />} />
       </Routes>
     </>
   );

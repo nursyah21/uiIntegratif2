@@ -1,6 +1,6 @@
 {
-  "name": "mosaic-react",
-  "version": "0.1.0",
+  "name": "ui-integratif",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
